@@ -1,37 +1,70 @@
 public class Radio {
-    private int currentStation;
-    private int currentVolume;
 
+     //   Радио станции
+    private int carrentStation;
 
-    public int getCurrentStation() {
-        return currentStation;
+    public void next() {
+
+        if (carrentStation != 9) {
+            carrentStation++;
+        } else {
+            carrentStation = 0;
+        }
     }
 
-    public void setCurrentStation(int currentStation) {
-        if (currentStation < 0) {
-            return;
+    public void prev() {
+        if (carrentStation != 0) {
+            carrentStation--;
+        } else {
+            carrentStation = 9;
         }
-        if (currentStation > 9) {
-            return;
-        }
-        this.currentStation = currentStation;
     }
 
-
-    public int getCurrentVolume() {
-        return currentVolume;
+    public int getCarrentStation() {
+        return carrentStation;
+    }
+    public void setCarrentStation(int carentStation) {
+        if (carentStation < 0) {
+            return;
+        }
+        if (carentStation > 9) {
+            return;
+        }
+        this.carrentStation = carentStation;
     }
 
-    public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < 0) {
+    // Радио ( Звук )
+
+    private int carrentVolume;
+
+    public void up() {
+        if (carrentVolume < 100) {
+            carrentVolume++;
+        } else {
+            carrentVolume = 100;
+        }
+    }
+
+    public void down() {
+        if (carrentVolume > 0) {
+            carrentVolume--;
+        } else {
+            carrentVolume = 0;
+        }
+    }
+
+    public int getCarrentVolume() {
+        return carrentVolume;
+    }
+
+    public void setCarrentVolume(int carrentVolume) {
+        if (carrentVolume > 100) {
             return;
         }
-        if (currentVolume > 100) {
+        if (carrentVolume < 0) {
             return;
         }
-        this.currentVolume = currentVolume;
+
+        this.carrentVolume = carrentVolume;
     }
 }
-
-
-
