@@ -1,70 +1,73 @@
+package ru.netology.radio;
+
 public class Radio {
 
-     //   Радио станции
-    private int carrentStation;
+    private int maxStation = 9;
+    private int minStation = 0;
+    private int currentStation;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int currentVolume;
 
-    public void next() {
 
-        if (carrentStation != 9) {
-            carrentStation++;
-        } else {
-            carrentStation = 0;
-        }
+    public int getCurrentStation() {
+        return currentStation;
     }
 
-    public void prev() {
-        if (carrentStation != 0) {
-            carrentStation--;
-        } else {
-            carrentStation = 9;
-        }
-    }
-
-    public int getCarrentStation() {
-        return carrentStation;
-    }
-    public void setCarrentStation(int carentStation) {
-        if (carentStation < 0) {
+    public void setCurrentStation(int newCurrentStation) {
+        if (newCurrentStation < minStation) {
             return;
         }
-        if (carentStation > 9) {
+        if (newCurrentStation > maxStation) {
             return;
         }
-        this.carrentStation = carentStation;
+        currentStation = newCurrentStation;
     }
 
-    // Радио ( Звук )
-
-    private int carrentVolume;
-
-    public void up() {
-        if (carrentVolume < 100) {
-            carrentVolume++;
+    public void setNextCurrentStation() {
+        if (currentStation < maxStation) {
+            currentStation = currentStation + 1;
         } else {
-            carrentVolume = 100;
+            currentStation = minStation;
         }
     }
 
-    public void down() {
-        if (carrentVolume > 0) {
-            carrentVolume--;
+    public void setPrevCurrentStation() {
+        if (currentStation > minStation) {
+            currentStation = currentStation - 1;
         } else {
-            carrentVolume = 0;
+            currentStation = maxStation;
         }
     }
 
-    public int getCarrentVolume() {
-        return carrentVolume;
+    public int getCurrentVolume() {
+        return currentVolume;
     }
 
-    public void setCarrentVolume(int carrentVolume) {
-        if (carrentVolume > 100) {
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
-        if (carrentVolume < 0) {
+        if (newCurrentVolume < minVolume) {
             return;
         }
-
-        this.carrentVolume = carrentVolume;
+        currentVolume = newCurrentVolume;
     }
+
+    public void setUpCurrentVolume() {
+        if (currentVolume < maxVolume) {
+            currentVolume = currentVolume + 1;
+        } else {
+            currentVolume = maxVolume;
+        }
+    }
+
+    public void setDownCurrentVolume() {
+        if (currentVolume > minVolume) {
+            currentVolume = currentVolume - 1;
+        } else {
+            currentVolume = minVolume;
+        }
+    }
+
 }
